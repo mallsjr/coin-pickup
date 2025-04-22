@@ -1,4 +1,4 @@
-require "collision"
+require("collision")
 
 function love.load()
   math.randomseed(os.time())
@@ -23,14 +23,13 @@ function love.update(dt)
     player.y = player.y - 4
   end
 
-  for i= #coins, 1, -1 do
+  for i = #coins, 1, -1 do
     local coin = coins[i]
     if AABB(player.x, player.y, player.w, player.h, coin.x, coin.y, coin.w, coin.h) then
       table.remove(coins, i)
       score = score + 1
     end
   end
-
 
   if math.random() < 0.01 then
     local coin = {}
@@ -44,7 +43,7 @@ end
 
 function love.draw()
   love.graphics.rectangle("fill", player.x, player.y, player.w, player.h)
-  for i=1, #coins, 1 do
+  for i = 1, #coins, 1 do
     local coin = coins[i]
     love.graphics.rectangle("fill", coin.x, coin.y, coin.w, coin.h)
   end
